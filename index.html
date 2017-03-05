@@ -1,0 +1,105 @@
+<html>
+	<head>
+		<title> Welcome to IPL </title>
+		<script type = "text/javascript" src = "resources/jquery.min.js"> </script>
+		<script type = "text/javascript" src = "resources/bootstrap.min.js"> </script>
+		<link rel="stylesheet" type="text/css" href="resources/bootstrap.min.css" > 
+		<link rel="stylesheet" type="text/css" href="resources/w3.css" > 
+		
+
+	</head>
+	<style>
+    
+   
+    </style>
+	<body onload = "getFeed()">
+     <div class="container">
+  	<span> <img src = "resources/images/images.png" height = "100px" style = "position:relative;left:500px"> </span>
+  	<ul class="nav nav-pills nav-justified">
+    <li class="active"><a href="index.html">Home</a></li>
+    <li><a href="#">Results</a></li>
+    <li><a href="#">Statistics</a></li>
+    <li><a href="#">Players</a></li>
+     <li><a href="#">Fantasy Teams</a></li>
+    <li><a href="#">Player Comparison</a></li>
+     <li><a href="predictor.html">Match Predictor</a></li>
+    </ul>
+ </div>
+ <div class="w3-content w3-section" style="max-width:500px">
+  <img class="mySlides" src="resources/images/2008champ.jpg" style="width:100%">
+  <img class="mySlides" src="resources/images/2009champ.jpg" style="width:100%">
+  <img class="mySlides"src="resources/images/2010champ.jpg"style="width:100%">
+  <img class="mySlides" src="resources/images/2011champ.jpg" style="width:100%">
+  <img class="mySlides" src="resources/images/2012champ.jpg" style="width:100%">
+  <img class="mySlides"src="resources/images/2013champ.jpg"style="width:100%">
+  <img class="mySlides" src="resources/images/2014champ.jpg" style="width:100%">
+  <img class="mySlides" src="resources/images/2015champ.jpg" style="width:100%">
+  <img class="mySlides"src="resources/images/2016champ.jpg"style="width:100%">
+</div>
+<div class = "container">
+  <div class = "feed">
+    <div id = "title">
+
+    </div>
+    <div id = "links">
+      <li id = "link"> </li>
+     
+    </div> 
+  </div>
+</div>	
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+function NewsItem(href,title){
+	this.anchor=document.createElement("a");
+	this.anchor.href=href;
+	this.anchor.innerHTML=title;	
+}
+
+xhr = new XMLHttpRequest();
+function getFeed()
+{
+
+	xhr.onreadystatechange = displayFeed;
+	xhr.open("GET","resources/feed.xml",true);
+	xhr.send();
+}
+
+function displayFeed()
+{
+    if(xhr.status == 200 && xhr.readyState == 4)
+    {
+    	content = xhr.responseXML.documentElement;
+    	firstTitle = content.getElementsByTagName("title")[0].firstChild.nodeValue;
+    	document.getElementById("title").innerHTML = firstTitle;
+        var items=content.getElementsByTagName("item");
+			for(i=0;i<items.length;i++){
+				item=items[i]
+				var href=item.getElementsByTagName("link")[0].firstChild.nodeValue;
+				var title=item.getElementsByTagName("title")[0].firstChild.nodeValue;
+				ni=new NewsItem(href,title);
+				li = document.createElement("li");
+				li.append(ni.anchor);
+				document.getElementById("link").append(li);
+				
+			}
+    }
+
+
+}
+</script>
+ </body>
+
+</html>
