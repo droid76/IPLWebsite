@@ -5,15 +5,17 @@
 		
 		<script type = "text/javascript" src = "resources/jquery.min.js"> </script>
 		<script type = "text/javascript" src = "resources/bootstrap.min.js"> </script>
-		
+		<script src = "resources/script.js">  </script>
 		<link rel="stylesheet" type="text/css" href="resources/bootstrap.min.css" > 
 		<link rel="stylesheet" type="text/css" href="resources/w3.css" > 
+		<link rel="stylesheet" type="text/css" href="resources/home.css" > 
 	
 	</head>
-
+	
 	<body onload = "getFeed()">
 	
-		<div class="container">
+	        
+	         <div class="container">
 		
 		  	<span> <img src = "resources/images/images.png" height = "100px" style = "position:relative;left:500px"> </span>
 		  	<ul class="nav nav-pills nav-justified">
@@ -24,19 +26,22 @@
 			<li><a href="#">Fantasy Teams</a></li>
 			<li><a href="#">Player Comparison</a></li>
 			<li><a href="predictor.html">Match Predictor</a></li>
+			<li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></li>
 			</ul>
 			
 	 	</div>
-	 	
-	 	<div id = "slideshow">
+  
+	 	<br/>
+	 	<br/>
+	 	<div id = "slideshow" class = "container">
 			
 			<img id = "slideShowImage" width = "300px" height = "200px" style = "display:none"/>
 			
 		</div>
 		
-		<div class = "container">
+		<div class = "container" >
 		
-			<div class = "feed">
+			<div class = "feed" style = "border:1px solid #de7059">
 			
 				<div id = "title">
 				
@@ -85,7 +90,7 @@
 			function getFeed()
 			{
 				xhr.onreadystatechange = displayFeed;
-				xhr.open("GET","resources/feed.xml",true);
+				xhr.open("GET","getFeed.php",true);
 				xhr.send();
 			}
 
@@ -110,29 +115,63 @@
 			}
 			
 		</script>
+		<div class="jumbobox">
+		<!--<div class="jumbobox-overlay"></div>-->
+		<div class="container jumbobox-content">
+		<h3 class="mytitle">Number of IPL Matches played till now</h3>
+		<h1 class = "mytitle"><span id="matches" >0</span></h1>
+		</div>
+		</div>
 		
+		<script> 
+		var numAnim = new CountUp("matches", 0, 584,0,5);
+   		numAnim.start();
+   		</script>
+		
+
+<div id="id01" class="modal">
+  
+  <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="document.getElementById('id01').style.display='none'">×</button>
+          <h1 class="text-center">Login</h1>
+      </div>
+      <div class="modal-body" id = "id01">
+          <form class="form col-md-12 center-block">
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" placeholder="Email">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control input-lg" placeholder="Password">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary btn-lg btn-block" >Sign In</button>
+              <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+          <div class="col-md-12">
+          <button class="btn" data-dismiss="modal" aria-hidden="true" onclick="document.getElementById('id01').style.display='none'">Cancel</button>
+		  </div>	
+      </div>
+  </div>
+  </div>
+</div>
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
 	</body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
