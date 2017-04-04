@@ -1,0 +1,187 @@
+<html>
+<head>
+
+<link href="compare.css" rel="stylesheet" type="text/css" />
+<title>Laptops Compare </title>
+</head>
+<body>
+
+
+<div id="top-title">
+        <div>
+        	<h3 style = "text-align : center">Compare Laptops </h1>
+        </div>
+        
+        <div class="product">
+		<br/>
+        	
+			</div>
+			
+			<div class = "team1select">
+			<h4> Select Team 1 </h4> 
+			<select id = "team1" onchange = "f1(1)" >
+                <option value = "default" selected="selected"> Enter team name </option>
+               <option value = "dd"> Delhi Daredevils </option>
+			   <option value = "gj"> Gujarat Lions </option>
+			   <option value = "kkr"> Kolkata Knightriders </option>
+		       <option value = "kxi"> Kings XI Punjab </option>
+		       <option value = "mi"> Mumbai Indians </option>
+		       <option value = "rps"> Rising Pune Supergiants </option>
+		       <option value = "rcb"> Royal Challengers Bangalore </option>
+		       <option value = "srh"> Sunrisers Hyderabad </option>
+                </select>
+           
+            </div>
+           
+           <div class = "team2select">
+           <h4> Select team2 </h4> 
+				<select id = "team2" onchange = "f1(2)">
+                <option value = "default" selected = "selected">Enter team name </option>
+                <option value = "dd"> Delhi Daredevils </option>
+				<option value = "gj"> Gujarat Lions </option>
+				<option value = "kkr"> Kolkata Knightriders </option>
+				<option value = "kxi"> Kings XI Punjab </option>
+				<option value = "mi"> Mumbai Indians </option>
+				<option value = "rps"> Rising Pune Supergiants </option>
+				<option value = "rcb"> Royal Challengers Bangalore </option>
+				<option value = "srh"> Sunrisers Hyderabad </option>
+               </select>
+            
+            </div>
+			<br/>
+			<br/>
+			<h4 id="subbox1" style = "display: none;margin-left:75px"> Select Model 1<h4/>
+			<form method = "post" id="laptop1" action = "action.php" style = "display: none;">
+				<select id="laptop1sel" style = "margin-left:75px">
+				 </select>
+			</form>
+			<h4 id="subbox2" style = "display: none;margin-top:-75px;margin-left:800px"> Select Model 2 </h4>
+			<form method = "post" id="laptop2"  action = "action.php" style = "display: none; right:25%">
+				<select id="laptop2sel" style= "margin-left:800px">
+				 </select>
+			</form>
+			<form method = "post" id="laptop2"  action = "action.php">
+				<div class = "compareButton"><input type = "button" value = "compare" name = "button1" onclick = "compare()"/>
+				 </div>
+			</form>
+			
+			</div>
+	       <script type = "text/javascript">
+			var brands=["HP","Dell"];
+			var phones={HP:["HP 15-ac033TX","HP Pavilion 15-ab032TX"],Dell:["Dell Vostro 3546","Dell Inspiron 3442"]};
+			
+			
+			var values={HP:["ac033","ab032"],Dell:["d3546","d3442"]};
+			var ph={1:["laptop1","laptop1sel","team1","subbox1"],2:["laptop2","laptop2sel","team2","subbox2"]}
+			
+			
+		      function f1(x)
+		      { 
+		      	var a  = document.getElementById(ph[x][2]);
+				var team1=a.options[a.selectedIndex].value;
+		        
+				
+				if (team1 == "default")
+				{
+					document.getElementById(ph[x][3]).style.display="none";
+					document.getElementById(ph[x][0]).style.display="none";
+		           document.getElementById(ph[x][1]).innerHTML="";
+				   
+				}
+				else
+				{
+				
+					for(var i in brands)
+					{
+					
+						if (brands[i]==team1)
+						{
+							document.getElementById(ph[x][3]).style.display="block";
+							document.getElementById(ph[x][0]).style.display="block";
+							var x = document.getElementById(ph[x][1]);
+							x.innerHTML="";
+							var options=phones[brands[i]];
+							var val=values[brands[i]];
+							for(var j in options)
+							{
+								var option = document.createElement("option");
+								option.text = options[j];
+								option.value=val[j];
+								x.add(option, x[0]);
+							}
+						}
+					}
+				}
+		       
+		       }
+             function compare()
+			   {
+			   var a  = document.getElementById(ph[1][2]);
+				var a=a.options[a.selectedIndex].value;
+				var b  = document.getElementById(ph[2][2]);
+				var b=b.options[b.selectedIndex].value;
+			     if(a=="default"||b=="default")
+				 {
+                            alert("Please select two laptops");
+                            return;
+                   }    
+			   	    var optionvalue1 = document.getElementById("laptop1sel").value;
+                    var optionvalue2 = document.getElementById("laptop2sel").value;
+                    var table = document.createElement('table');
+				    table.className = "blueshine";
+				    table.id = "comparetable";
+				    var row1 = document.createElement("tr");
+    				var cell1 = document.createElement("td");
+    				cell1.className = "blank";
+    				row1.appendChild(cell1);
+    				table.appendChild(row1);
+    				var head1 = document.createElement("th");
+    				var head2 = document.createElement("th");
+    				  head1.innerHTML = document.getElementById("laptop1sel").options[document.getElementById("laptop1sel").selectedIndex].innerHTML;
+    				head2.innerHTML = document.getElementById("laptop2sel").options[document.getElementById("laptop2sel").selectedIndex].innerHTML;
+    				row1.appendChild(head1);
+    				row1.appendChild(head2);
+    			
+            var laptopsSpecs = ["Dimensions/Weight","Display Size","Resolution","OS","CPU","GPU","RAM","STORAGE","Battery","Price"];
+    				
+					var ac033 = ["38.43 x 25.46 x 2.43 cm/2.14 kg","15.6 inch","1366x768 pixels ","Windows 8.1 64bit","Intel Core i5 (5th Gen) 5200U","AMD Radeon R5 Series M330 Graphics 2 GB","4 GB DDR3","1TB HDD","4 cell","INR 45,900"];
+    				var ab032 = ["38.43 x 26.11 x 2.51 cm/2.29 kg","15.6 inch","1920x1080 pixels ","Windows 8.1 64bit","Intel Core i5 (5th Gen) 5200U","NVIDIA GeForce 940M 2 GB","8 GB DDR3","1TB HDD","4 cell","INR 56,000"];
+					var d3546 = ["38.14 x 26.75 x 2.56 cm/2.14 kg","15.6 inch","1366x768 pixels ","Ubuntu 64bit","Intel Core i5 4210U","NVIDIA GeForce GT 820M 2 GB","4 GB DDR3","500 GB HDD","4 cell","INR 37,600"];
+    				var d3442 = ["34.60 x 24.6 x 2.54 cm/2.5 kg","13.86 inch","1366x768 pixels ","Windows 8.1 64bit","Intel Core i3 4005U","Intel HD Graphics 4400","4 GB DDR3","500 GB HDD","4 cell","INR 31,000"];
+    				
+             if(optionvalue1=="ac033"){optionvalue1 = ac033;}
+                  else if(optionvalue1=="ab032"){optionvalue1 = ab032;}
+                  else if(optionvalue1=="d3546"){optionvalue1 = d3546;}
+                  else if(optionvalue1=="d3442"){optionvalue1 = d3442;}
+                  
+                  
+                   if(optionvalue2=="ac033"){optionvalue2 = ac033;}
+                  else if(optionvalue2=="ab032"){optionvalue2 = ab032;}
+                  else if(optionvalue2=="d3546"){optionvalue2 = d3546;}
+                  else if(optionvalue2=="d3442"){optionvalue2 = d3442;}
+                 
+                
+                   for(var i in laptopsSpecs)
+    				{
+                           
+                         var row = document.createElement("tr");
+                         var td = document.createElement("td");
+                         td.className = "rowTitle";
+                         td.innerHTML = laptopsSpecs[i];
+                         row.appendChild(td);
+                         var td1 =  document.createElement("td");
+                         var td2 = document.createElement("td");
+                         td1.innerHTML = optionvalue1[i];
+                         td2.innerHTML = optionvalue2[i];
+                         row.appendChild(td1);
+                         row.appendChild(td2);
+                         table.appendChild(row);
+
+    				}
+  				  document.body.appendChild(table);
+			  }
+
+			    
+			</script>
+ </body>       	
+</html>

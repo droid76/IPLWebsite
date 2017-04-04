@@ -239,7 +239,7 @@ def simulateInnings1(bat,ball,runs1):
 			strike = wickets+2
 			wickets += 1
 		else:
-			# print('extra')
+			#print('extra')
 			f.write('extra')
 			runs += 1
 			f.write('\n')
