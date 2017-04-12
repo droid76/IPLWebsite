@@ -1,0 +1,247 @@
+Player
+Virat Kohli
+Suresh Raina
+Rohit Sharma
+Gautam Gambhir
+Chris Gayle
+Robin Uthappa
+David Warner
+MS Dhoni
+AB de Villiers
+Shikhar Dhawan
+Yusuf Pathan
+Ajinkya Rahane
+Shane Watson
+Dinesh Karthik
+Murali Vijay
+Brendon McCullum
+Yuvraj Singh
+Ambati Rayudu
+Shaun Marsh
+JP Duminy
+Kieron Pollard
+Parthiv Patel
+Dwayne Smith
+Manish Pandey
+Ravindra Jadeja
+David Miller
+Naman Ojha
+Subramaniam Badrinath
+Manoj Tiwary
+Wriddhiman Saha
+Aaron Finch
+Francois du Plessis
+Dwayne Bravo
+Steve Smith
+Saurabh Tiwary
+Sanju Samson
+Lendl Simmons
+Mandeep Singh
+Glenn Maxwell
+Karun Nair
+Eoin Morgan
+Mayank Agarwal
+Harbhajan Singh
+Quinton de Kock
+Lokesh Rahul
+Angelo Mathews
+Moises Henriques
+Stuart Binny
+Kedar Jadhav
+Piyush Chawla
+Suryakumar Yadav
+Shakib Al Hasan
+James Faulkner
+Shreyas Iyer
+Axar Patel
+Corey Anderson
+Praveen Kumar
+Rajat Bhatia
+Aditya Tare
+Vinay Kumar
+Darren Sammy
+Deepak Hooda
+Amit Mishra
+Chris Morris
+Krunal Pandya
+Ravichandran Ashwin
+Mitchell Marsh
+Pawan Negi
+Rishabh Pant
+Sarfaraz Khan
+Hashim Amla
+Bipul Sharma
+Kane Williamson
+Bhuvneshwar Kumar
+Rishi Dhawan
+Marcus Stoinis
+Mitchell Johnson
+Sachin Baby
+Zaheer Khan
+Nitish Rana
+Chris Lynn
+Sam Billings
+Dhawal Kulkarni
+Umesh Yadav
+Iqbal Abdulla
+Carlos Brathwaite
+Lasith Malinga
+Ben Cutting
+Mohit Sharma
+Jagadeesha Suchith
+Tim Southee
+Sunil Narine
+Mitchell McClenaghan
+Harshal Patel
+Ishank Jaggi
+Ishan Kishan
+Varun Aaron
+Ashish Nehra
+Munaf Patel
+Nathan Coulter-Nile
+Ishant Sharma
+Abhimanyu Mithun
+Shadab Jakati
+Sreenath Aravind
+Eklavya Dwivedi
+Shahbaz Nadeem
+Nikhil Naik
+Pradeep Sangwan
+Akshdeep Nath
+Sandeep Sharma
+Ashok Dinda
+Pravin Tambe
+Anureet Singh
+Rahul Tewatia
+Shreyas Gopal
+KC Cariappa
+Mohammed Shami
+Siddarth Kaul
+Jasprit Bumrah
+Jaskaran Singh
+Shardul Thakur
+Jayant Yadav
+Ben Laughlin
+Barinder Sran
+Jaydev Unadkat
+Chris Jordan
+Yuzvendra Chahal
+Ankit Rajpoot
+Mustafizur Rahman
+Murugan Ashwin
+Samuel Badree
+Shivil Kaushik
+Swapnil Singh
+Tabraiz Shamsi
+Trent Boult
+Adam Milne
+Deepak Chahar
+Pat Cummins
+Kuldeep Yadav
+Vijay Shankar
+Adam Zampa
+Player
+ Lasith Malinga
+ Amit Mishra
+ Dwayne Bravo
+ Piyush Chawla
+ Harbhajan Singh
+ Vinay Kumar
+ Ravichandran Ashwin
+ Ashish Nehra
+ Zaheer Khan
+ Sunil Narine
+ Bhuvneshwar Kumar
+ Praveen Kumar
+ Shane Watson
+ Ravindra Jadeja
+ Umesh Yadav
+ Munaf Patel
+ Dhawal Kulkarni
+ Mohit Sharma
+ Rajat Bhatia
+ Ashok Dinda
+ Ishant Sharma
+ Yuzvendra Chahal
+ Kieron Pollard
+ Sandeep Sharma
+ James Faulkner
+ Mitchell Johnson
+ Shadab Jakati
+ Shakib Al Hasan
+ Axar Patel
+ Yusuf Pathan
+ Chris Morris
+ Sreenath Aravind
+ Iqbal Abdulla
+ Moises Henriques
+ Manpreet Gony
+ Karn Sharma
+ Yuvraj Singh
+ Mitchell McClenaghan
+ Jaydev Unadkat
+ Shahbaz Nadeem
+ Harshal Patel
+ Varun Aaron
+ Pravin Tambe
+ Angelo Mathews
+ Jasprit Bumrah
+ Nathan Coulter-Nile
+ Mitchell Marsh
+ Tim Southee
+ Rishi Dhawan
+ Chris Gayle
+ Mohammed Shami
+ Mustafizur Rahman
+ Stuart Binny
+ Anureet Singh
+ Rohit Sharma
+ Bipul Sharma
+ Pawan Negi
+ Barinder Sran
+ Adam Zampa
+ Ankit Sharma
+ Darren Sammy
+ Chris Jordan
+ Trent Boult
+ Jagadeesha Suchith
+ Marcus Stoinis
+ Shreyas Gopal
+ Carlos Brathwaite
+ Murugan Ashwin
+ Abhimanyu Mithun
+ Ben Cutting
+ Krunal Pandya
+ Kuldeep Yadav
+ Shivil Kaushik
+ Siddarth Kaul
+ Jaskaran Singh
+ Corey Anderson
+ Jayant Yadav
+ Deepak Hooda
+ Shikhar Dhawan
+ Ankit Rajpoot
+ Hardik Pandya
+ KC Cariappa
+ Glenn Maxwell
+ Rahul Tewatia
+ Tabraiz Shamsi
+ Sachin Baby
+ Samuel Badree
+ Pat Cummins
+ Ajinkya Rahane
+ Mandeep Singh
+ Aaron Finch
+ Ben Laughlin
+ Adam Milne
+ Lendl Simmons
+ Manoj Tiwary
+ Shardul Thakur
+ Nitish Rana
+ Kane Williamson
+ Ambati Rayudu
+ Suryakumar Yadav
+ Murali Vijay
+ Deepak Chahar
+ Swapnil Singh
+ Vijay Shankar

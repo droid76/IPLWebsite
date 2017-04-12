@@ -1,0 +1,182 @@
+<html>
+<head>
+<<<<<<< HEAD
+<script type = "text/javascript" src = "resources/jquery.min.js"> </script>
+		<script type = "text/javascript" src = "resources/bootstrap.min.js"> </script>
+		<script src = "resources/script.js">  </script>
+		<link rel="stylesheet" type="text/css" href="resources/bootstrap.min.css" > 
+		<link rel="stylesheet" type="text/css" href="resources/w3.css" > 
+		<link rel="stylesheet" type="text/css" href="resources/home.css" > 
+=======
+
+>>>>>>> 6405fd1ba3d4da2b489dc8fac622feb2a2c78691
+<link href="resources/compare.css" rel="stylesheet" type="text/css" />
+<title>Player Compare </title>
+</head>
+<body>
+<div class="container">
+		
+		  	<span> <img src = "resources/images/images.png" height = "100px" style = "position:relative;left:500px"> </span>
+		  	<ul class="nav nav-pills nav-justified">
+			<li class="active"><a href="index.html">Home</a></li>
+			<li><a href="results.html">Results</a></li>
+			<li><a href="#"> Player Statistics</a></li>
+			<li><a href="#">Fantasy Teams</a></li>
+			<li><a href="player_compare.html">Player Comparison</a></li>
+			<li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></li>
+			</ul>
+			
+	 	</div>
+
+<div id="top-title">
+        <div>
+        	<h3 style = "text-align : center">Compare Players </h1>
+        </div>
+        
+        <div class="product">
+		<br/>
+        	
+			</div>
+			
+			<div class = "team1select">
+			<h4> Select Team 1 </h4> 
+			<select id = "team1" onchange="f1()" >
+                <option value = "default" selected="selected"> Enter team name </option>
+               <option value = "Dd"> Delhi Daredevils </option>
+			   <option value = "Gj"> Gujarat Lions </option>
+			   <option value = "Kkr"> Kolkata Knightriders </option>
+		       <option value = "Kxi"> Kings XI Punjab </option>
+		       <option value = "Mi"> Mumbai Indians </option>
+		       <option value = "Rps"> Rising Pune Supergiants </option>
+		       <option value = "Rcb"> Royal Challengers Bangalore </option>
+		       <option value = "Srh"> Sunrisers Hyderabad </option>
+                </select>
+           
+            </div>
+           
+           <div class = "team2select">
+           <h4> Select team2 </h4> 
+				<select id = "team2" onchange = "f1()">
+                <option value = "default" selected = "selected">Enter team name </option>
+                <option value = "Dd"> Delhi Daredevils </option>
+				<option value = "Gj"> Gujarat Lions </option>
+				<option value = "Kkr"> Kolkata Knightriders </option>
+				<option value = "Kxi"> Kings XI Punjab </option>
+				<option value = "Mi"> Mumbai Indians </option>
+				<option value = "Rps"> Rising Pune Supergiants </option>
+				<option value = "Rcb"> Royal Challengers Bangalore </option>
+				<option value = "Srh"> Sunrisers Hyderabad </option>
+               </select>
+            
+            </div>
+			<br/>
+			<br/>
+			<h4 id="subbox1" style = "display: none;margin-left:75px"> Select Player 1<h4/>
+			<form method = "post" id="laptop1" action = "action.php" style = "display: none;">
+				<select id="laptop1sel" style = "margin-left:75px">
+				 </select>
+			</form>
+			<h4 id="subbox2" style = "display: none;margin-top:-75px;margin-left:800px"> Select Player 2 </h4>
+			<form method = "post" id="laptop2"  action = "action.php" style = "display: none; right:25%">
+				<select id="laptop2sel" style= "margin-left:800px">
+				 </select>
+			</form>
+			<form method = "post" id="laptop2"  action = "action.php">
+				<div class = "compareButton"><input type = "button" value = "compare" name = "button1" onclick = "compare()"/>
+				 </div>
+			</form>
+			
+			</div>
+	       <script type = "text/javascript">
+			function f1()
+		      { 
+		      	xhr = new XMLHttpRequest();
+		      	var e = document.getElementById("team1");
+				var team1 = e.options[e.selectedIndex].value;
+				var f = document.getElementById("team2");
+				var team2 = f.options[f.selectedIndex].value;
+				if(team1 != "default" && team2 !="default")
+				{
+				   xhr.onreadystatechange = fun1;
+                   xhr.open("GET","search.php?team1="+team1"&team2="+team2,true);
+                   xhr.send(;
+		        }
+			}
+			function fun1()
+			{
+				if(xhr.readyState == 4 && xhr.status == 200)
+				{
+					
+				}
+			}
+             function compare()
+			   {
+			   var a  = document.getElementById(ph[1][2]);
+				var a=a.options[a.selectedIndex].value;
+				var b  = document.getElementById(ph[2][2]);
+				var b=b.options[b.selectedIndex].value;
+			     if(a=="default"||b=="default")
+				 {
+                            alert("Please select two laptops");
+                            return;
+                   }    
+			   	    var optionvalue1 = document.getElementById("laptop1sel").value;
+                    var optionvalue2 = document.getElementById("laptop2sel").value;
+                    var table = document.createElement('table');
+				    table.className = "blueshine";
+				    table.id = "comparetable";
+				    var row1 = document.createElement("tr");
+    				var cell1 = document.createElement("td");
+    				cell1.className = "blank";
+    				row1.appendChild(cell1);
+    				table.appendChild(row1);
+    				var head1 = document.createElement("th");
+    				var head2 = document.createElement("th");
+    				  head1.innerHTML = document.getElementById("laptop1sel").options[document.getElementById("laptop1sel").selectedIndex].innerHTML;
+    				head2.innerHTML = document.getElementById("laptop2sel").options[document.getElementById("laptop2sel").selectedIndex].innerHTML;
+    				row1.appendChild(head1);
+    				row1.appendChild(head2);
+    			
+            var laptopsSpecs = ["Dimensions/Weight","Display Size","Resolution","OS","CPU","GPU","RAM","STORAGE","Battery","Price"];
+    				
+					var ac033 = ["38.43 x 25.46 x 2.43 cm/2.14 kg","15.6 inch","1366x768 pixels ","Windows 8.1 64bit","Intel Core i5 (5th Gen) 5200U","AMD Radeon R5 Series M330 Graphics 2 GB","4 GB DDR3","1TB HDD","4 cell","INR 45,900"];
+    				var ab032 = ["38.43 x 26.11 x 2.51 cm/2.29 kg","15.6 inch","1920x1080 pixels ","Windows 8.1 64bit","Intel Core i5 (5th Gen) 5200U","NVIDIA GeForce 940M 2 GB","8 GB DDR3","1TB HDD","4 cell","INR 56,000"];
+					var d3546 = ["38.14 x 26.75 x 2.56 cm/2.14 kg","15.6 inch","1366x768 pixels ","Ubuntu 64bit","Intel Core i5 4210U","NVIDIA GeForce GT 820M 2 GB","4 GB DDR3","500 GB HDD","4 cell","INR 37,600"];
+    				var d3442 = ["34.60 x 24.6 x 2.54 cm/2.5 kg","13.86 inch","1366x768 pixels ","Windows 8.1 64bit","Intel Core i3 4005U","Intel HD Graphics 4400","4 GB DDR3","500 GB HDD","4 cell","INR 31,000"];
+    				
+             if(optionvalue1=="ac033"){optionvalue1 = ac033;}
+                  else if(optionvalue1=="ab032"){optionvalue1 = ab032;}
+                  else if(optionvalue1=="d3546"){optionvalue1 = d3546;}
+                  else if(optionvalue1=="d3442"){optionvalue1 = d3442;}
+                  
+                  
+                   if(optionvalue2=="ac033"){optionvalue2 = ac033;}
+                  else if(optionvalue2=="ab032"){optionvalue2 = ab032;}
+                  else if(optionvalue2=="d3546"){optionvalue2 = d3546;}
+                  else if(optionvalue2=="d3442"){optionvalue2 = d3442;}
+                 
+                
+                   for(var i in laptopsSpecs)
+    				{
+                           
+                         var row = document.createElement("tr");
+                         var td = document.createElement("td");
+                         td.className = "rowTitle";
+                         td.innerHTML = laptopsSpecs[i];
+                         row.appendChild(td);
+                         var td1 =  document.createElement("td");
+                         var td2 = document.createElement("td");
+                         td1.innerHTML = optionvalue1[i];
+                         td2.innerHTML = optionvalue2[i];
+                         row.appendChild(td1);
+                         row.appendChild(td2);
+                         table.appendChild(row);
+
+    				}
+  				  document.body.appendChild(table);
+			  }
+
+			    
+			</script>
+ </body>       	
+</html>

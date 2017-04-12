@@ -1,0 +1,251 @@
+<html>
+	<head>
+	
+		<title> Welcome to IPL </title>
+		
+		<script type = "text/javascript" src = "http://localhost/WT2Project/IPLWebsite/resources/jquery.min.js"> </script>
+		<script type = "text/javascript" src = "http://localhost/WT2Project/IPLWebsite/resources/bootstrap.min.js"> </script>
+		
+		<link rel="stylesheet" type="text/css" href="http://localhost/WT2Project/IPLWebsite/resources/bootstrap.min.css" > 
+		<link rel="stylesheet" type="text/css" href="http://localhost/WT2Project/IPLWebsite/resources/w3.css" > 
+		<style type="text/css">
+		.img
+			{
+				position:relative;
+				left:0px;
+				top:0px;
+				border:1px solid black;
+				height:1000px;
+				width:100%;
+			}
+			</style>	
+		<script>
+			var xhr = new XMLHttpRequest();
+			var u = window.location.search.substr(1);
+			arr = u.split('=');
+		var slideimages = new Array() // create new array to preload images
+		slideimages[0] = new Image() // create new instance of image object
+		slideimages[0].src = "ipl1.jpg" 
+		slideimages[1] = new Image()
+		slideimages[1].src = "ipl2.jpg"
+		slideimages[2] = new Image()
+		slideimages[2].src = "ipl7.jpg"
+		slideimages[3] = new Image()
+		slideimages[3].src = "ipl4.jpg"
+		slideimages[4] = new Image()
+		slideimages[4].src = "ipl5.jpeg"
+		slideimages[5] = new Image()
+		slideimages[5].src = "ipl6.jpg"
+		slideimages[6] = new Image()
+		slideimages[6].src = "ipl7.jpg"
+		slideimages[7] = new Image()
+		slideimages[7].src = "ipl8.jpg"
+		slideimages[8] = new Image()
+		slideimages[8].src = "ipl9.jpg"
+		
+		var step=0
+
+		function slideit(){
+ 		if (!document.images)
+  		return
+ 		document.getElementById('slide').src = slideimages[step].src
+ 		if (step<8)
+ 		 step++
+ 		else
+  		step=0
+ 		//call function "slideit()" every 2.5 seconds
+ 		setTimeout("slideit()",3000)
+		}
+
+		slideit()
+		
+			function getInfo()
+			{
+				sub();
+				document.getElementById('jjj').innerHTML =" "+ arr[1];
+				document.getElementById('jjj').style = "text-align:center";
+				xhr.onreadystatechange = setInfo();
+				xhr.open("GET","userDetails.php",true);
+				xhr.send();
+			}
+			
+			function setInfo()
+			{
+				if(xhr.readyState == 4 && xhr.status == 200 )
+				{
+					var usr = xhr.responseText;
+					var val = document.getElementById("usr");
+					var p = document.getElementsByTagName('li')[0]
+					//val.innerHTML = usr;
+					
+				}
+			}
+			
+			function myfunction(ctrl) {
+				var TextInsideLi = ctrl.getElementsByTagName('p')[0].innerHTML;
+				ctrl.getElementsByTagName('p')[0].innerHTML+= "yo";
+}
+		</script>
+		<style>
+			
+		</style>
+	</head>
+	
+	<body onload = 'getInfo()'>
+		<h2 align = "center"id="usr">Welcome!</h2><div id = 'jjj'> </div>
+		<span> <img src = "http://localhost/WT2Project/IPLWebsite/resources/images/images.png" height = "100px" width = "200px" style = "position:relative;left:600px"> </span>
+		<div class="container">
+		  	<ul class="nav nav-pills nav-justified">
+			<li class="active"><a href="index.html">Home</a></li>
+			<li><a href="#">Results</a></li>
+			<li><a href="#">Player Statistics</a></li>
+			<li><a href="#">Fantasy Teams</a></li>
+			
+			<!--<li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></li> -->
+			</ul>
+			
+	 	</div>
+		<header id="mainhead">
+		<h1 align="center">FANTASY LEAGUE</h1>
+		</header>
+		<table border = "1 px solid black" height = "800px" width = "100%" style = "border-collapse:collapse">
+			<thead>
+				<tr  height = "150px"> 
+					<th colspan  = 4> <a href="www.iplt20.com"><img class="img" id="slide" src="nba2.jpg" width="100%" height="10%"></a> </th>
+				</tr>
+			</thead>
+			<tbody>	
+			</tbody>
+		</table>
+	<script type="text/javascript">
+		var step=0
+
+		function slideit(){
+ 		if (!document.images)
+  		return
+ 		document.getElementById('slide').src = slideimages[step].src
+ 		if (step<8)
+ 		 step++
+ 		else
+  		step=0
+ 		//call function "slideit()" every 2.5 seconds
+ 		setTimeout("slideit()",3000)
+		}
+
+		slideit()
+		</script>
+		<script type = "text/javascript">
+			function sub()
+			{
+			document.getElementById("Submit").onclick=function(e){
+			return confirm("Are you sure you want to play the game with the currently selected team?");
+			}
+			}
+			var current;
+			var cnt = 0;
+			function player_selected(elem_id)
+			{
+
+					var team = "" + elem_id + ".html";
+					var ex = document.createElement("object");
+					ex.type = "text/html";
+					ex.data = team;
+					ex.height = "550px";
+					ex.width = "400px";
+
+					var pic = "" + elem_id + ".jpg";
+					var logo = document.createElement("img");
+					logo.src = pic;
+
+					if(cnt == 0)
+					{
+						document.getElementById("player_logo").appendChild(logo);
+						document.getElementById("player_team").appendChild(ex);
+						cnt++;
+					}
+					else
+					{
+						var current_logo = document.getElementById("player_logo");
+						var current_team = document.getElementById("player_team");
+
+						var para = document.createElement("p");
+						para.style.fontSize = "40px";
+						para.appendChild(document.createTextNode("YOU HAVE SELECTED"));
+
+
+						var newLogoDiv = document.createElement("div");
+						newLogoDiv.id = "player_logo";
+						newLogoDiv.style.height = "100px";
+						newLogoDiv.style.width = "500px";
+						newLogoDiv.style.marginLeft = "12%";
+						newLogoDiv.appendChild(para);
+						newLogoDiv.appendChild(logo);
+
+
+						var newTeam = document.createElement("div");
+						newTeam.id = "player_team";
+						newTeam.style.marginLeft = "12%";
+						newTeam.appendChild(document.createElement("br"));
+						newTeam.appendChild(document.createElement("br"));
+						newTeam.appendChild(document.createElement("br"));
+						newTeam.appendChild(document.createElement("br"));
+						newTeam.appendChild(ex);
+
+						current_logo.parentNode.replaceChild(newLogoDiv, current_logo);
+						current_team.parentNode.replaceChild( newTeam, current_team);
+
+					}
+
+			}
+		</script>
+		<style type="text/css">
+		#Submit{
+			position:absolute;
+			margin-bottom:10000%;
+			margin-top:0%;
+			margin-left:30%;
+			margin-right:50%;
+
+		}
+
+		</style>
+
+		<table width = "75%" align = "center" border = "1px solid black">
+			<thead align = "center">
+					
+			</thead>
+
+			<tbody align = "center">
+				<tr height = "100px">
+					<td id = "dd" onclick = "player_selected(this.id)"> Delhi Daredevils</td>
+					<td id = "gl" onclick = "player_selected(this.id)">Gujarat Lions</td>
+
+				</tr>
+				<tr height = "100px">
+					<td id = "kxip" onclick = "player_selected(this.id)"> Kings X1 Punjab</td>
+					<td id = "kkr" onclick = "player_selected(this.id)">Kolkata Knight Riders</td>
+				</tr>
+				<tr height = "100px">
+					<td id = "mi" onclick = "player_selected(this.id)">Mumbai Indians</td>
+					<td id = "rps" onclick = "player_selected(this.id)">Rising Pune Supergiants</td>
+				</tr>
+				<tr height = "100px">
+					<td id = "rcb" onclick = "player_selected(this.id)">Royal Challengers Bangalore</td>
+					<td id = "srh" onclick = "player_selected(this.id)">Sunrisers Hyederabad</td>
+				</tr>
+			</tbody>
+		</table>
+
+
+		<div id = "player_logo" style = "height:100px; width:500px; margin-left:12%">
+			<p style = "font-size:40px"> YOU HAVE SELECTED : <p>
+		</div>
+
+		<div id = "player_team" style = "margin-left:12%">
+			<br /> <br /><br /> <br />
+		</div>
+		<input id = "Submit" type="submit" value="CLICK TO CONFIRM TEAM SELECTED" onclick=""></input>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,213 @@
+<html>
+	<head>
+	
+		<title> Welcome to IPL </title>
+		
+		<script type = "text/javascript" src = "resources/jquery.min.js"> </script>
+		<script type = "text/javascript" src = "resources/bootstrap.min.js"> </script>
+		<script src = "resources/script.js">  </script>
+		<link rel="stylesheet" type="text/css" href="resources/bootstrap.min.css" > 
+		<link rel="stylesheet" type="text/css" href="resources/w3.css" > 
+		<link rel="stylesheet" type="text/css" href="resources/home.css" > 
+	
+	</head>
+	
+	<body onload = "images()">
+	
+	        
+	         <div class="container">
+		
+		  	<span> <img src = "resources/images/images.png" height = "100px" style = "position:relative;left:500px"> </span>
+		  	<ul class="nav nav-pills nav-justified">
+			<li class="active"><a href="index.html">Home</a></li>
+<<<<<<< HEAD
+			<li><a href="results2.html">Results</a></li>
+			<li><a href="stats.html">Statistics</a></li>
+			<li><a href="">Fantasy Teams</a></li>
+=======
+			<li><a href="#">Results</a></li>
+			<li><a href="#">Statistics</a></li>
+			<li><a href="#">Players</a></li>
+			<li><a href="#">Fantasy Teams</a></li>
+			<li><a href="player_compare.html">Player Comparison</a></li>
+			<li><a href="predictor.html">Match Predictor</a></li>
+>>>>>>> 6405fd1ba3d4da2b489dc8fac622feb2a2c78691
+			<li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></li>
+			</ul>
+			
+	 	</div>
+  
+	 	<br/>
+	 	<br/>
+	 	<div id = "slideshow" class = "container">
+			
+			<img id = "slideShowImage" width = "300px" height = "200px" src = "resources/images/loading.gif"/>
+			
+		</div>
+		
+		<div class = "container" >
+		
+			<div class = "feed" style = "border:1px solid #de7059">
+			
+				<div id = "title">
+				<img id = "slideShowImage" width = "300px" height = "200px" src = "resources/images/loading.gif"/>
+				 
+
+				</div>
+				
+				<div id = "links">
+					<li id = "link"> </li>
+				</div> 
+			</div>
+		</div>	
+		
+		<script>
+			var xhr = new XMLHttpRequest();
+			var myIndex = 0;
+			imageList = new Array();
+			var x;
+			setTimeout(getFeed,4000);
+			function images()
+			{
+				
+				if(xhr)
+				{
+					xhr.onreadystatechange = slideShow;
+					xhr.open("GET","images.txt",true);
+					xhr.send();	
+
+
+				}
+				function slideShow()
+				{
+					
+					if(xhr.readyState == 4 && xhr.status == 200)
+					{
+                           var arr=(xhr.responseText).split(",");
+                           for(var i=0;i<arr.length;i++)
+                           {
+                           		imageList[i] = arr[i];
+                           		
+                           	}	
+					}
+				    
+				    setTimeout(carousel, 2000);
+
+				}
+				
+			}
+			function carousel() {
+				
+				$("#slideShowImage").fadeOut("slow", function()
+                    {
+                    	$("#slideShowImage").attr("src", imageList[myIndex]);
+					$("#slideShowImage").attr("width", 300);
+					$("#slideShowImage").attr("height", 200);
+					$("#slideShowImage").css("marginTop", 20);
+					$("#slideShowImage").css("marginBottom", 20);
+					$("#slideShowImage").css("marginLeft", "40%");
+                         $("#slideShowImage").fadeIn("slow", function(){});
+                    });
+				
+				
+				myIndex = 1 + (myIndex % imageList.length);
+				
+				setTimeout(carousel, 2000);
+			}
+			
+			function NewsItem(href,title){
+				this.anchor=document.createElement("a");
+				this.anchor.href=href;
+				this.anchor.innerHTML=title;	
+			}
+
+			function getFeed()
+			{
+				xhr.onreadystatechange = displayFeed;
+				xhr.open("GET","getFeed.php",true);
+				xhr.send();
+			}
+
+			function displayFeed()
+			{
+				if(xhr.status == 200 && xhr.readyState == 4)
+				{
+					content = xhr.responseXML.documentElement;
+					firstTitle = content.getElementsByTagName("title")[0].firstChild.nodeValue;
+					document.getElementById("title").innerHTML = firstTitle;
+					var items=content.getElementsByTagName("item");
+					for(i=0;i<items.length;i++){
+						item=items[i]
+						var href=item.getElementsByTagName("link")[0].firstChild.nodeValue;
+						var title=item.getElementsByTagName("title")[0].firstChild.nodeValue;
+						ni=new NewsItem(href,title);
+						li = document.createElement("li");
+						li.append(ni.anchor);
+						document.getElementById("link").append(li);
+					}
+				  
+				}
+			     
+			}
+			
+		</script>
+		<div class="jumbobox">
+		<!--<div class="jumbobox-overlay"></div>-->
+		<div class="container jumbobox-content">
+		<h3 class="mytitle">Number of IPL Matches played till now</h3>
+		<h1 class = "mytitle"><span id="matches" >0</span></h1>
+		</div>
+		</div>
+		
+		<script> 
+		var numAnim = new CountUp("matches", 0, 584,0,5);
+   		numAnim.start();
+   		</script>
+		
+
+<div id="id01" class="modal">
+  
+  <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="document.getElementById('id01').style.display='none'">×</button>
+          <h1 class="text-center">Login</h1>
+      </div>
+      <div class="modal-body" id = "id01">
+          <form class="form col-md-12 center-block" method="POST" action="log_in.php">
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" name = "username"placeholder="Username">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control input-lg" name = "password"placeholder="Password">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary btn-lg btn-block" >Sign In</button>
+              <span class="pull-center"><a href="sign.html">Register</a></span>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+          <div class="col-md-12">
+          <button class="btn" data-dismiss="modal" aria-hidden="true" onclick="document.getElementById('id01').style.display='none'">Cancel</button>
+		  </div>	
+      </div>
+  </div>
+  </div>
+</div>
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+</script>
+	</body>
+
+</html>

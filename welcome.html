@@ -1,0 +1,82 @@
+<html>
+	<head>
+	
+		<title> Welcome to IPL </title>
+		
+		<script type = "text/javascript" src = "resources/jquery.min.js"> </script>
+		<script type = "text/javascript" src = "resources/bootstrap.min.js"> </script>
+		
+		<link rel="stylesheet" type="text/css" href="resources/bootstrap.min.css" > 
+		<link rel="stylesheet" type="text/css" href="resources/w3.css" > 
+		
+		<script>
+			var xhr = new XMLHttpRequest();
+			var u = window.location.search.substr(1);
+			arr = u.split('=');
+			
+			function getInfo()
+			{
+				document.getElementById('jjj').innerHTML =" "+ arr[1];
+				document.getElementById('jjj').style = "text-align:center";
+				xhr.onreadystatechange = setInfo();
+				xhr.open("GET","userDetails.php",true);
+				xhr.send();
+			}
+			
+			function setInfo()
+			{
+				if(xhr.readyState == 4 && xhr.status == 200 )
+				{
+					var usr = xhr.responseText;
+					var val = document.getElementById("usr");
+					//val.innerHTML = usr;
+					
+				}
+			}
+			
+			function myfunction(ctrl) {
+				var TextInsideLi = ctrl.getElementsByTagName('p')[0].innerHTML;
+				ctrl.getElementsByTagName('p')[0].innerHTML+= "yo";
+}
+		</script>
+		<style>
+			
+		</style>
+	</head>
+	
+	<body onload = 'getInfo()'>
+		<h2 align = "center"id="usr">Welcome!</h2><div id = 'jjj'> </div>
+		<span> <img src = "resources/images/images.png" height = "100px" width = "200px" style = "position:relative;left:600px"> </span>
+		<div class="container">
+		  	<ul class="nav nav-pills nav-justified">
+			<li class="active"><a href="index.html">Home</a></li>
+			<li><a href="#">Results</a></li>
+			<li><a href="#">Statistics</a></li>
+			<li><a href="#">Players</a></li>
+			<li><a href="#">Fantasy Teams</a></li>
+			<li><a href="#">Player Comparison</a></li>
+			<li><a href="predictor.html">Match Predictor</a></li>
+			<li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></li>
+			</ul>
+			
+	 	</div>
+		<p>Your Fantasy Team list : </p>
+		<div style="border: thin solid black; width: 200px">
+			<ul>
+				<li ondblclick="myfunction(this)"><p>Player 1</p></li>
+				<li onclick="myfunction(this)"><p>Player 2</p></li>
+				<li onclick="myfunction(this)"><p>Player 3</p></li>
+				<li onclick="myfunction(this)"><p>Player 4</p></li>
+				<li onclick="myfunction(this)"><p>Player 5</p></li>
+				<li onclick="myfunction(this)"><p>Player 6</p></li>
+				<li onclick="myfunction(this)"><p>Player 7</p></li>
+				<li onclick="myfunction(this)"><p>Player 8</p></li>
+				<li onclick="myfunction(this)"><p>Player 9</p></li>
+				<li onclick="myfunction(this)"><p>Player 10</p></li>
+				<li onclick="myfunction(this)"><p>Player 11</p></li>
+			</ul>
+		</div>	
+		
+	</body>
+	
+</html>
