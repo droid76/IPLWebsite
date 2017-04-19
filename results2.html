@@ -1,0 +1,176 @@
+<html>
+	<head>
+
+		<title> RESULTS </title>
+
+		<script type = "text/javascript" src = "resources/jquery.min.js"> </script>
+		<script type = "text/javascript" src = "resources/bootstrap.min.js"> </script>
+		<script src = "resources/script.js">  </script>
+		<link rel="stylesheet" type="text/css" href="resources/bootstrap.min.css" >
+		<link rel="stylesheet" type="text/css" href="resources/w3.css" >
+		<link rel="stylesheet" type="text/css" href="resources/home.css" >
+
+		<script>
+
+			function monitor()
+			{
+                    /*
+				ev = new EventSource("http://localhost/sse.php");
+				ev.addEventListener("myevent", new_score_handler,false);
+				ev.onerror = error_handler;
+                    */
+				score_event = new EventSource("sse.php");
+				score_event.addEventListener("newscore", new_score_handler,true);
+				score_event.onerror = error_handler;
+
+			}
+
+			function new_score_handler(event)
+			{
+				//alert(event.data);
+
+				//alert("DF");
+				    scoreField = document.getElementById("score");
+					b1name = document.getElementById("batsman1name");
+					b1runs = document.getElementById("batsman1runs");
+					b2name = document.getElementById("batsman2name");
+					b2runs = document.getElementById("batsman2runs");
+					overs = document.getElementById("overs");
+					message = document.getElementById("message");
+				    values = event.data.split(":");
+				    scoreField.value = values[0];
+						b1name.innerHTML = (values[1].split("-"))[0];
+						b1runs.innerHTML = (values[1].split("-"))[1];
+						b2name.innerHTML = (values[2].split("-"))[0];
+						b2runs.innerHTML = (values[2].split("-"))[1];
+						overs.value = values[3];
+						m = values[4];
+						m = m.toUpperCase()
+						if(m.indexOf("OUT") != -1)
+						{
+							message.style = "color:red";
+
+						}
+						else
+						{
+							message.style = "color:blue";
+						}
+						message.innerHTML = m;
+				//alert("dfa");
+
+			}
+
+			function error_handler()
+			{
+				console.log("Error retrieving updated scores");
+			}
+
+			//$(document).ready(function(){monitor();});
+
+		</script>
+
+	</head>
+
+	<body onload = "monitor()">
+
+		<div class="container">
+
+		  	<span> <img src = "resources/images/images.png" height = "100px" style = "position:relative;left:500px"> </span>
+		  	<ul class="nav nav-pills nav-justified">
+				<li><a href="index.html">Home</a></li>
+				<li class="active"><a href="results2.html">Results</a></li>
+				<li><a href="stats.html">Statistics</a></li>
+				<li><a href="Stuff/welcome.html">Fantasy Teams</a></li>
+				<li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></li>
+			</ul>
+
+		</div>
+
+
+		<div class = "container">
+
+			SCORE: <input type = "text" id = "score" />
+			CURRENTLY BATTING:
+
+			<table class = "table">
+
+				<thead>
+
+					<tr>
+						<th> NAME </th>
+						<th> RUNS </th>
+
+					</tr>
+
+				</thead>
+
+				<tbody>
+
+					<tr>
+						<td id = "batsman1name"> </td>
+						<td id = "batsman1runs"> </td?
+					</tr>
+
+					<tr>
+						<td id = "batsman2name"> </td>
+						<td id = "batsman2runs"> </td?
+					</tr>
+
+				</tbody>
+
+			</table>
+
+			OVERS: <input type = "text" id = "overs" />
+
+			<div id = "message">
+			</div>
+		</div>
+
+		<div id="id01" class="modal">
+  
+  <div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true" onclick="document.getElementById('id01').style.display='none'">×</button>
+          <h1 class="text-center">Login</h1>
+      </div>
+      <div class="modal-body" id = "id01">
+          <form class="form col-md-12 center-block" method="POST" action="log_in.php">
+            <div class="form-group">
+              <input type="text" class="form-control input-lg" name = "username"placeholder="Username">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control input-lg" name = "password"placeholder="Password">
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary btn-lg btn-block" >Sign In</button>
+              <span class="pull-center"><a href="sign.html">Register</a></span>
+            </div>
+          </form>
+      </div>
+      <div class="modal-footer">
+          <div class="col-md-12">
+          <button class="btn" data-dismiss="modal" aria-hidden="true" onclick="document.getElementById('id01').style.display='none'">Cancel</button>
+		  </div>	
+      </div>
+  </div>
+  </div>
+</div>
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+</script>
+
+
+	</body>
+
+</html>

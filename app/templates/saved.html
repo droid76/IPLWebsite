@@ -1,0 +1,36 @@
+<html>
+  <head>
+
+    <title> Welcome to IPL </title>
+
+    <script type = "text/javascript" src = "http://localhost/WT2Project/IPLWebsite/resources/jquery.min.js"> </script>
+    <script type = "text/javascript" src = "http://localhost/WT2Project/IPLWebsite/resources/bootstrap.min.js"> </script>
+    <script src = "http://localhost/WT2Project/IPLWebsite/resources/script.js">  </script>
+    <link rel="stylesheet" type="text/css" href="http://localhost/WT2Project/IPLWebsite/resources/bootstrap.min.css" >
+    <link rel="stylesheet" type="text/css" href="http://localhost/WT2Project/IPLWebsite/resources/w3.css" >
+    <link rel="stylesheet" type="text/css" href="http://localhost/WT2Project/IPLWebsite/resources/home.css" >
+    
+    <script type="text/javascript" src="{{ url_for('static', filename='advance.js') }}"></script>
+    	
+    </script>
+  </head>
+	<body>
+          <div class="container">
+
+             <span> <img src = "http://localhost/WT2Project/IPLWebsite/resources/images/images.png" height = "100px" style = "position:relative;left:500px"> </span>
+             <ul class="nav nav-pills nav-justified">
+           <li><a href="http://localhost/index.html">Home</a></li>
+           <li><a href="http://localhost/results2.html">Results</a></li>
+           <li><a href="http://localhost/stats.html">Player Statistics</a></li>
+           <li><a href="#">Fantasy Teams</a></li>
+           <li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></li>
+           </ul>
+         </div>
+
+
+         <div class = "container">
+
+              <h1> WELCOME {{name}}, YOUR DETAILS HAVE BEEN SUCCESSFULLY SAVED! </h1>
+              <input type = "button" onclick = "advance_to_teams()" value = "CLICK TO ADVANCE"/>
+
+         </div>

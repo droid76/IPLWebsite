@@ -4,7 +4,7 @@ body {
 	color: #000;
 	font-family: "YanoneKaffeesatzRegular";
 	line-height: 1.7em; 
-	background-image:url('images/background3.jpg');
+	
 }
 
 
@@ -38,12 +38,12 @@ h6 { font-size: 14px; margin: 0 0 5px; padding: 0; }
 	color: #746522
 }
 
-.brand1select{
-     margin-left: 75px;
+.team1select{
+     left: 75px;
   }
- .brand2select{
-    margin-top: -65px;
- 	margin-left:800px;
+ .team2select{
+  top: 65px;
+ 	left:800px;
  }
 .compareButton{
 	margin-left: 450px;

@@ -1,23 +1,20 @@
 <?php
-
     session_start();
-    $hostname = 'localhost';
-    $dbname   = 'ipl';
-    $username = 'root'; 
-    $password = '';
-    mysql_connect($hostname, $username, $password) or DIE('Connection to host isailed, perhaps the service is down!');
-    mysql_select_db($dbname) or DIE('Database name is not available!');
+     $conn=new mysqli("localhost","root","","ipl");
+        if($conn->connect_error)
+        {
+            die("Connection failed");
+        }
 
-    $userName=mysql_real_escape_string($_POST['username']); 
-    $passWord=md5(mysql_real_escape_string($_POST['password'])); 
+    $userName=$_POST['username']; 
+    $passWord=$_POST['password']; 
     $query = "SELECT * FROM websiteusers WHERE userName = '$_POST[username]' AND pass = '$_POST[password]'";
-    $res = mysql_query($query);
-    $rows = mysql_num_rows($res);
-    if ($rows==1) 
+   $result1=$conn->query($query);
+    if($result1->num_rows==1)
     {
         $_SESSION['userName'] = $_POST['username'];
 		$usr = $_POST['username'];
-        header("Location: welcome.html?usr=$usr");
+        header("Location: http://localhost/WT2Project/IPLWebsite/Stuff/welcome.html?usr=$usr");
 	   
     }
     else 

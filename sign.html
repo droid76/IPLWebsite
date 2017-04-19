@@ -1,51 +1,65 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-		<meta charset="utf-8">
-		<title>Bootstrap Login Form</title>
-		<meta name="generator" content="Bootply" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="resources/bootstrap.min.css" rel="stylesheet">
-		<link href="resources/styles.css" rel="stylesheet">
-	</head>
+<html>
+  <head>
+
+  
+    <title> Welcome to IPL </title>
+    
+    <script type = "text/javascript" src = "resources/jquery.min.js"> </script>
+    <script type = "text/javascript" src = "resources/bootstrap.min.js"> </script>
+    <script src = "resources/script.js">  </script>
+    <link rel="stylesheet" type="text/css" href="resources/bootstrap.min.css" > 
+    <link rel="stylesheet" type="text/css" href="resources/w3.css" > 
+    <link rel="stylesheet" type="text/css" href="resources/home.css" > 
+  
+  </head>
 	<body>
-<div id="loginModal" class="modal show" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog">
-  <div class="modal-content">
+         <div class="container">
+    
+        <span> <img src = "resources/images/images.png" height = "100px" style = "position:relative;left:500px"> </span>
+        <ul class="nav nav-pills nav-justified">
+      <li class="active"><a href="index.html">Home</a></li>
+      <li><a href="results2.html">Results</a></li>
+      <li><a href="stats.html">Statistics</a></li>
+      <li><a href="Stuff/welcome.html">Fantasy Teams</a></li>
+
+      <li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></li>
+      </ul>
+    </div>
       <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
           <h1 class="text-center">Login</h1>
       </div>
-      <div class="modal-body">
-          <form class="form col-md-12 center-block" method = "POST" action="sign_up.php">
+
+          <form class="form col-md-5 center-block" method = "POST" action="http://127.0.0.1:5000/login">
             <div class="form-group">
-              <input type="text" class="form-control input-lg" name="name" placeholder="Fullname">
+              <input type="text" class="form-control input-lg" name="fullname" placeholder="Fullname" required = "required">
+
+          <form class="form col-md-5 center-block" method = "POST" action="sign_up.php">
+			 <div class="form-group">
+              <input type="text" class="form-control input-lg" name="user" placeholder="Username" required = "required">
             </div>
 			 <div class="form-group">
-              <input type="text" class="form-control input-lg" name="user" placeholder="Username">
-            </div>
-			 <div class="form-group">
-              <input type="text" class="form-control input-lg" name="email" placeholder="Email">
+              <input type="email" class="form-control input-lg" name="email" placeholder="Email" required = "required">
             </div>
             <div class="form-group">
-              <input type="password" class="form-control input-lg" name="pass" placeholder="Password">
+              <input type="password" class="form-control input-lg" name="pass" placeholder="Password" required = "required">
             </div>
             <div class="form-group">
-              <button class="btn btn-primary btn-lg btn-block">Sign In</button>
+              <input type = "submit" class="btn btn-primary btn-lg btn-block" value = "Sign In"/>
             </div>
+             <div class="form-group">
+            <button class="btn" data-dismiss="modal" aria-hidden="true" onclick = "cancel()">Cancel</button>
+          </div>
           </form>
-      </div>
-      <div class="modal-footer">
-          <div class="col-md-12">
-          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-		  </div>	
-      </div>
-  </div>
-  </div>
-</div>
-	<!-- script references -->
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
-		<script src="resources/bootstrap.min.js"></script>
+          <script>
+            function cancel()
+            {
+              for(i=0;i<document.getElementsByTagName("input").length;i++)
+              {
+                document.getElementsByTagName("input")[i].setAttribute("required","");
+              }
+              document.location.href = "index.html";
+
+            }
+          </script>
 	</body>
 </html>

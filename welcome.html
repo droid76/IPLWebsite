@@ -17,6 +17,7 @@
 			function getInfo()
 			{
 				document.getElementById('jjj').innerHTML =" "+ arr[1];
+				document.getElementById('jjj').style = "text-align:center";
 				xhr.onreadystatechange = setInfo();
 				xhr.open("GET","userDetails.php",true);
 				xhr.send();
@@ -44,8 +45,7 @@
 	</head>
 	
 	<body onload = 'getInfo()'>
-		<span> <img src = "resources/images/profile.png" height = "50px" width = "50px" style = "left:0px> </span>
-		<p id="usr">Welcome!</p><div id = 'jjj'> </div>
+		<h2 align = "center"id="usr">Welcome!</h2><div id = 'jjj'> </div>
 		<span> <img src = "resources/images/images.png" height = "100px" width = "200px" style = "position:relative;left:600px"> </span>
 		<div class="container">
 		  	<ul class="nav nav-pills nav-justified">
@@ -56,6 +56,7 @@
 			<li><a href="#">Fantasy Teams</a></li>
 			<li><a href="#">Player Comparison</a></li>
 			<li><a href="predictor.html">Match Predictor</a></li>
+			<li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></li>
 			</ul>
 			
 	 	</div>

@@ -12,7 +12,7 @@
 	
 	</head>
 	
-	<body onload = "getFeed()">
+	<body onload = "images()">
 	
 	        
 	         <div class="container">
@@ -20,12 +20,9 @@
 		  	<span> <img src = "resources/images/images.png" height = "100px" style = "position:relative;left:500px"> </span>
 		  	<ul class="nav nav-pills nav-justified">
 			<li class="active"><a href="index.html">Home</a></li>
-			<li><a href="#">Results</a></li>
-			<li><a href="#">Statistics</a></li>
-			<li><a href="#">Players</a></li>
-			<li><a href="#">Fantasy Teams</a></li>
-			<li><a href="#">Player Comparison</a></li>
-			<li><a href="predictor.html">Match Predictor</a></li>
+			<li><a href="results2.html">Results</a></li>
+			<li><a href="stats.html">Statistics</a></li>
+			<li><a href="Stuff/welcome.html">Fantasy Teams</a></li>
 			<li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></li>
 			</ul>
 			
@@ -35,7 +32,7 @@
 	 	<br/>
 	 	<div id = "slideshow" class = "container">
 			
-			<img id = "slideShowImage" width = "300px" height = "200px" style = "display:none"/>
+			<img id = "slideShowImage" width = "300px" height = "200px" src = "resources/images/loading.gif"/>
 			
 		</div>
 		
@@ -44,7 +41,8 @@
 			<div class = "feed" style = "border:1px solid #de7059">
 			
 				<div id = "title">
-				
+				<img id = "slideShowImage" width = "300px" height = "200px" src = "resources/images/loading.gif"/>
+				 
 
 				</div>
 				
@@ -55,14 +53,40 @@
 		</div>	
 		
 		<script>
-		
-			var myIndex = 0;
 			var xhr = new XMLHttpRequest();
-			var imageList = ["resources/images/2008champ.jpg", "resources/images/2009champ.jpg", "resources/images/2010champ.jpg",
-							"resources/images/2011champ.jpg", "resources/images/2012champ.jpg", "resources/images/2013champ.jpg",
-							"resources/images/2014champ.jpg", "resources/images/2015champ.jpg", "resources/images/2016champ.jpg"]
-			carousel();
-			
+			var myIndex = 0;
+			imageList = new Array();
+			var x;
+			setTimeout(getFeed,4000);
+			function images()
+			{
+				
+				if(xhr)
+				{
+					xhr.onreadystatechange = slideShow;
+					xhr.open("GET","images.txt",true);
+					xhr.send();	
+
+
+				}
+				function slideShow()
+				{
+					
+					if(xhr.readyState == 4 && xhr.status == 200)
+					{
+                           var arr=(xhr.responseText).split(",");
+                           for(var i=0;i<arr.length;i++)
+                           {
+                           		imageList[i] = arr[i];
+                           		
+                           	}	
+					}
+				    
+				    setTimeout(carousel, 2000);
+
+				}
+				
+			}
 			function carousel() {
 				
 				$("#slideShowImage").fadeOut("slow", function()
@@ -78,6 +102,7 @@
 				
 				
 				myIndex = 1 + (myIndex % imageList.length);
+				
 				setTimeout(carousel, 2000);
 			}
 			
@@ -111,7 +136,9 @@
 						li.append(ni.anchor);
 						document.getElementById("link").append(li);
 					}
+				  
 				}
+			     
 			}
 			
 		</script>
@@ -139,16 +166,16 @@
           <h1 class="text-center">Login</h1>
       </div>
       <div class="modal-body" id = "id01">
-          <form class="form col-md-12 center-block">
+          <form class="form col-md-12 center-block" method="POST" action="log_in.php">
             <div class="form-group">
-              <input type="text" class="form-control input-lg" placeholder="Email">
+              <input type="text" class="form-control input-lg" name = "username"placeholder="Username">
             </div>
             <div class="form-group">
-              <input type="password" class="form-control input-lg" placeholder="Password">
+              <input type="password" class="form-control input-lg" name = "password"placeholder="Password">
             </div>
             <div class="form-group">
-              <button class="btn btn-primary btn-lg btn-block" onclick = "func1()">Sign In</button>
-              <span class="pull-right"><a href="sign.html">Register</a></span><span><a href="#">Need help?</a></span>
+              <button class="btn btn-primary btn-lg btn-block" >Sign In</button>
+              <span class="pull-center"><a href="sign.html">Register</a></span>
             </div>
           </form>
       </div>
@@ -170,10 +197,7 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-function func1()
-{
-	window.location = "welcome.html"
-}
+
 </script>
 	</body>
 

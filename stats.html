@@ -1,0 +1,147 @@
+  <html>
+	<head>
+		<script type = "text/javascript" src = "resources/jquery.min.js"> </script>
+		<script type = "text/javascript" src = "resources/bootstrap.min.js"> </script>
+		<script src = "resources/script.js">  </script>
+		<link rel="stylesheet" type="text/css" href="resources/bootstrap.min.css" > 
+		<link rel="stylesheet" type="text/css" href="resources/w3.css" > 
+		<link rel="stylesheet" type="text/css" href="resources/home.css" > 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	
+
+		<style>
+		#container{
+			border:1px solid black;
+		
+		}
+		.result{
+					border:none;
+					background-color:grey;
+					display:block;
+				
+				}
+				.result:hover{
+					background-color:white;
+					display:block;
+				}
+		</style>
+		<script>
+			var Suggest=function(){
+			
+			  temp=this;
+			  this.timer=null;
+			  this.search=null;
+			  this.container=null;
+			  this.xhr=new XMLHttpRequest();
+			  this.getPlayer=function(){
+			  
+					if(this.timer){
+					
+					//clear timeout
+					clearTimeout(this.timer);
+					}
+			    this.timer=setTimeout(this.sendTerm,1000)
+			  
+			  }
+			this.sendTerm=function(){  
+			
+					temp.search=document.getElementById("player");
+					temp.container=document.getElementById("container");
+					temp.container.innerHTML="";
+					console.log(temp.search.value);
+					if(temp.search.value==""){
+						console.log("empty")
+					}
+					else{
+					url="search.php?term="+temp.search.value;
+						if(localStorage.getItem(url)){
+						//fetch from cache
+							
+							var r=JSON.parse((localStorage.getItem(url)))
+							temp.populatePlayer(r);
+						}
+					
+						else{
+						temp.xhr.onreadystatechange=temp.fetchPlayer;
+						temp.xhr.open("GET",url,true);
+						temp.xhr.send();
+						}
+					}
+					
+					//console.log(this);
+			
+			}
+			
+			this.fetchPlayer=function(){
+			
+				if(this.readyState==4 && this.status==200){
+					console.log(this.responseText);
+					localStorage.setItem(this.responseURL,this.responseText);
+				     var res=JSON.parse(this.responseText);
+					 temp.populatePlayer(res);
+				
+				}			
+					//console.log(this);
+			}
+			this.populatePlayer=function (r){
+				temp.container=document.getElementById("container");
+				for(var i=0;i<r.length;i++){
+						var d=document.createElement("div")
+						d.innerHTML=r[i]
+						d.className="result"
+						d.onclick=temp.setPlayer;
+						temp.container.appendChild(d);
+				
+				}
+			
+			
+			}
+			
+			this.setPlayer=function(e){
+			
+					temp.search.value=e.target.innerHTML;
+					temp.container.style.display="none";
+			
+			
+			}
+			
+			
+			}	
+			
+			obj=new Suggest();
+
+	</script>
+	</head>
+	<body>
+		 <div class = "container"
+		
+		  	<span> <img src = "resources/images/images.png" height = "100px" style = "position:relative;left:500px"> </span>
+		  	<ul class="nav nav-pills nav-justified">
+			<li ><a href="index.html">Home</a></li>
+			<li><a href="results2.html">Results</a></li>
+			<li class="active"><a href="stats.html">Statistics</a></li>
+			<li><a href="Stuff/welcome.html">Fantasy Teams</a></li>
+			<li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></li>
+			</ul>
+			
+	 	</div>
+		<form method = "GET" action = "getStats.php">
+		<table border="0" cellpadding="0">
+			<tr><td>Player</td>
+				<td>
+				<input type="text" id="player" name = "player" onkeyup="obj.getPlayer()">
+			    </td>
+			 <td> 
+				<input type="submit" class="btn btn-default" value = "Search">
+      				<span class="glyphicon glyphicon-search"></span> 
+    		
+    	   </td>
+    	   </tr>
+			<tr><td></td><td><div id="container"></div></td></tr>
+		
+		
+		</table>
+		
+	</body>
+
+</html>
