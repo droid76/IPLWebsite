@@ -1,5 +1,6 @@
 <html>
 <head>
+<<<<<<< HEAD
 
 <link href="compare.css" rel="stylesheet" type="text/css" />
 <title>Laptops Compare </title>
@@ -10,6 +11,39 @@
 <div id="top-title">
         <div>
         	<h3 style = "text-align : center">Compare Laptops </h1>
+=======
+<<<<<<< HEAD
+<script type = "text/javascript" src = "resources/jquery.min.js"> </script>
+		<script type = "text/javascript" src = "resources/bootstrap.min.js"> </script>
+		<script src = "resources/script.js">  </script>
+		<link rel="stylesheet" type="text/css" href="resources/bootstrap.min.css" > 
+		<link rel="stylesheet" type="text/css" href="resources/w3.css" > 
+		<link rel="stylesheet" type="text/css" href="resources/home.css" > 
+=======
+
+>>>>>>> 6405fd1ba3d4da2b489dc8fac622feb2a2c78691
+<link href="resources/compare.css" rel="stylesheet" type="text/css" />
+<title>Player Compare </title>
+</head>
+<body>
+<div class="container">
+		
+		  	<span> <img src = "resources/images/images.png" height = "100px" style = "position:relative;left:500px"> </span>
+		  	<ul class="nav nav-pills nav-justified">
+			<li class="active"><a href="index.html">Home</a></li>
+			<li><a href="results.html">Results</a></li>
+			<li><a href="#"> Player Statistics</a></li>
+			<li><a href="#">Fantasy Teams</a></li>
+			<li><a href="player_compare.html">Player Comparison</a></li>
+			<li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></li>
+			</ul>
+			
+	 	</div>
+
+<div id="top-title">
+        <div>
+        	<h3 style = "text-align : center">Compare Players </h1>
+>>>>>>> 1218eabd41f761519da32c5285655449daefe39d
         </div>
         
         <div class="product">
@@ -19,6 +53,7 @@
 			
 			<div class = "team1select">
 			<h4> Select Team 1 </h4> 
+<<<<<<< HEAD
 			<select id = "team1" onchange = "f1(1)" >
                 <option value = "default" selected="selected"> Enter team name </option>
                <option value = "dd"> Delhi Daredevils </option>
@@ -29,12 +64,25 @@
 		       <option value = "rps"> Rising Pune Supergiants </option>
 		       <option value = "rcb"> Royal Challengers Bangalore </option>
 		       <option value = "srh"> Sunrisers Hyderabad </option>
+=======
+			<select id = "team1" onchange="f1()" >
+                <option value = "default" selected="selected"> Enter team name </option>
+               <option value = "Dd"> Delhi Daredevils </option>
+			   <option value = "Gj"> Gujarat Lions </option>
+			   <option value = "Kkr"> Kolkata Knightriders </option>
+		       <option value = "Kxi"> Kings XI Punjab </option>
+		       <option value = "Mi"> Mumbai Indians </option>
+		       <option value = "Rps"> Rising Pune Supergiants </option>
+		       <option value = "Rcb"> Royal Challengers Bangalore </option>
+		       <option value = "Srh"> Sunrisers Hyderabad </option>
+>>>>>>> 1218eabd41f761519da32c5285655449daefe39d
                 </select>
            
             </div>
            
            <div class = "team2select">
            <h4> Select team2 </h4> 
+<<<<<<< HEAD
 				<select id = "team2" onchange = "f1(2)">
                 <option value = "default" selected = "selected">Enter team name </option>
                 <option value = "dd"> Delhi Daredevils </option>
@@ -45,17 +93,37 @@
 				<option value = "rps"> Rising Pune Supergiants </option>
 				<option value = "rcb"> Royal Challengers Bangalore </option>
 				<option value = "srh"> Sunrisers Hyderabad </option>
+=======
+				<select id = "team2" onchange = "f1()">
+                <option value = "default" selected = "selected">Enter team name </option>
+                <option value = "Dd"> Delhi Daredevils </option>
+				<option value = "Gj"> Gujarat Lions </option>
+				<option value = "Kkr"> Kolkata Knightriders </option>
+				<option value = "Kxi"> Kings XI Punjab </option>
+				<option value = "Mi"> Mumbai Indians </option>
+				<option value = "Rps"> Rising Pune Supergiants </option>
+				<option value = "Rcb"> Royal Challengers Bangalore </option>
+				<option value = "Srh"> Sunrisers Hyderabad </option>
+>>>>>>> 1218eabd41f761519da32c5285655449daefe39d
                </select>
             
             </div>
 			<br/>
 			<br/>
+<<<<<<< HEAD
 			<h4 id="subbox1" style = "display: none;margin-left:75px"> Select Model 1<h4/>
+=======
+			<h4 id="subbox1" style = "display: none;margin-left:75px"> Select Player 1<h4/>
+>>>>>>> 1218eabd41f761519da32c5285655449daefe39d
 			<form method = "post" id="laptop1" action = "action.php" style = "display: none;">
 				<select id="laptop1sel" style = "margin-left:75px">
 				 </select>
 			</form>
+<<<<<<< HEAD
 			<h4 id="subbox2" style = "display: none;margin-top:-75px;margin-left:800px"> Select Model 2 </h4>
+=======
+			<h4 id="subbox2" style = "display: none;margin-top:-75px;margin-left:800px"> Select Player 2 </h4>
+>>>>>>> 1218eabd41f761519da32c5285655449daefe39d
 			<form method = "post" id="laptop2"  action = "action.php" style = "display: none; right:25%">
 				<select id="laptop2sel" style= "margin-left:800px">
 				 </select>
@@ -67,6 +135,7 @@
 			
 			</div>
 	       <script type = "text/javascript">
+<<<<<<< HEAD
 			var brands=["HP","Dell"];
 			var phones={HP:["HP 15-ac033TX","HP Pavilion 15-ab032TX"],Dell:["Dell Vostro 3546","Dell Inspiron 3442"]};
 			
@@ -114,6 +183,29 @@
 				}
 		       
 		       }
+=======
+			function f1()
+		      { 
+		      	xhr = new XMLHttpRequest();
+		      	var e = document.getElementById("team1");
+				var team1 = e.options[e.selectedIndex].value;
+				var f = document.getElementById("team2");
+				var team2 = f.options[f.selectedIndex].value;
+				if(team1 != "default" && team2 !="default")
+				{
+				   xhr.onreadystatechange = fun1;
+                   xhr.open("GET","search.php?team1="+team1"&team2="+team2,true);
+                   xhr.send(;
+		        }
+			}
+			function fun1()
+			{
+				if(xhr.readyState == 4 && xhr.status == 200)
+				{
+					
+				}
+			}
+>>>>>>> 1218eabd41f761519da32c5285655449daefe39d
              function compare()
 			   {
 			   var a  = document.getElementById(ph[1][2]);

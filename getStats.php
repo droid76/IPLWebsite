@@ -14,10 +14,17 @@
 		
 		  	<span> <img src = "resources/images/images.png" height = "100px" style = "position:relative;left:500px"> </span>
 		  	<ul class="nav nav-pills nav-justified">
+<<<<<<< HEAD
 			<li ><a href="index.html">Home</a></li>
 			<li><a href="results.html">Results</a></li>
 			<li class = "active"><a href="stats.html">Player Statistics</a></li>
 			<li><a href="Stuff/welcome.html">Fantasy Teams</a></li>
+=======
+			<li class="active"><a href="index.html">Home</a></li>
+			<li><a href="results.html">Results</a></li>
+			<li><a href="stats.html">Player Statistics</a></li>
+			<li><a href="#">Fantasy Teams</a></li>
+>>>>>>> 1218eabd41f761519da32c5285655449daefe39d
 			<li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></li>
 			</ul>
 			

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title> RESULTS </title>
+
+		<script type = "text/javascript" src = "resources/jquery.min.js"> </script>
+		<script type = "text/javascript" src = "resources/bootstrap.min.js"> </script>
+		<script src = "resources/script.js">  </script>
+		<link rel="stylesheet" type="text/css" href="resources/bootstrap.min.css" >
+		<link rel="stylesheet" type="text/css" href="resources/w3.css" >
+		<link rel="stylesheet" type="text/css" href="resources/home.css" >
+
+		<script>
+
+			var xhr = new XMLHttpRequest();
+
+			function monitor()
+			{
+				xhr.onreadystatechange = updateScore;
+				xhr.open("GET", "scores.php", true);
+				xhr.send();
+			}
+
+			function updateScore()
+			{
+				if(xhr.readyState == 3 && xhr.status == 200)
+				{
+					str = this.responseText;
+					scoreField = document.getElementById("score");
+					b1name = document.getElementById("batsman1name");
+					b1runs = document.getElementById("batsman1runs");
+					b2name = document.getElementById("batsman2name");
+					b2runs = document.getElementById("batsman2runs");
+					overs = document.getElementById("overs");
+					message = document.getElementById("message");
+					if(this.responseText.indexOf("Fatal") == -1)
+					{
+						values = str.split(":");
+						scoreField.value = values[0];
+						b1name.innerHTML = (values[1].split("-"))[0];
+						b1runs.innerHTML = (values[1].split("-"))[1];
+						b2name.innerHTML = (values[2].split("-"))[0];
+						b2runs.innerHTML = (values[2].split("-"))[1];
+						overs.value = values[3];
+						m = values[4];
+						m = m.toUpperCase()
+						if(m.indexOf("OUT") != -1)
+						{
+							message.style = "color:red";
+
+						}
+						else
+						{
+							message.style = "color:blue";
+						}
+						message.innerHTML = m;
+					}
+					else
+					{
+						xhr.abort();
+						monitor();
+					}
+				}
+
+				if(xhr.readyState == 4 && xhr.status == 200)
+				{
+					xhr.abort();
+					monitor();
+				}
+			}
+			/*
+			function monitor()
+			{
+
+				ev = new EventSource("http://localhost/sse.php");
+				ev.addEventListener("myevent", new_score_handler,false);
+				ev.onerror = error_handler;
+
+				score_event = new EventSource("http://localhost/scores.php");
+				score_event.addEventListener("newscore", new_score_handler);
+				score_event.onerror = error_handler;
+
+			}
+
+			function new_score_handler(event)
+			{
+				//alert(event.data);
+
+				//alert("DF");
+				score_field = document.getElementById("score");
+				score_field.value = event.data;
+				//alert("dfa");
+
+			}
+
+			function error_handler()
+			{
+				alert("Error retrieving updated scores");
+			}
+			*/
+			$(document).ready(function(){monitor();});
+
+		</script>
+
+	</head>
+
+	<body>
+
+		<div class="container">
+
+		  	<span> <img src = "resources/images/images.png" height = "100px" style = "position:relative;left:500px"> </span>
+		  	<ul class="nav nav-pills nav-justified">
+				<li><a href="index.html">Home</a></li>
+				<li class="active"><a href="results.html">Results</a></li>
+				<li><a href="#">Player Statistics</a></li>
+				<li><a href="#">Fantasy Teams</a></li>
+				<li><a href="player_compare.html">Player Comparison</a></li>
+				<li><button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button></li>
+			</ul>
+
+		</div>
+
+		<div class = "container">
+
+			SCORE: <input type = "text" id = "score" />
+			CURRENTLY BATTING:
+
+			<table class = "table">
+
+				<thead>
+
+					<tr>
+						<th> NAME </th>
+						<th> RUNS </th>
+
+					</tr>
+
+				</thead>
+
+				<tbody>
+
+					<tr>
+						<td id = "batsman1name"> </td>
+						<td id = "batsman1runs"> </td?
+					</tr>
+
+					<tr>
+						<td id = "batsman2name"> </td>
+						<td id = "batsman2runs"> </td?
+					</tr>
+
+				</tbody>
+
+			</table>
+
+			OVERS: <input type = "text" id = "overs" />
+
+			<div id = "message">
+			</div>
+		</div>
+
+
+	</body>
+
+</html>
